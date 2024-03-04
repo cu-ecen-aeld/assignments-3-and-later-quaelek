@@ -1,80 +1,90 @@
 #!/bin/bash
 # Script outline to install and build kernel.
-# Author: Siddhant Jajoo.
+# Author: Siddhant Jajoo... NOT!
 
-set -e
-set -u
+set -euo pipefail
 
-OUTDIR=/tmp/aeld
-KERNEL_REPO=git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
+OUTDIR=${1:-/tmp/aeld}
+KERNEL_REPO=https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 KERNEL_VERSION=v5.1.10
 BUSYBOX_VERSION=1_33_1
-FINDER_APP_DIR=$(realpath $(dirname $0))
+FINDER_APP_DIR=$(realpath $(dirname "$0"))
 ARCH=arm64
-CROSS_COMPILE=aarch64-none-linux-gnu-
+CROSS_COMPILE=aarch64-linux-gnu-
 
-if [ $# -lt 1 ]
-then
-	echo "Using default directory ${OUTDIR} for output"
-else
-	OUTDIR=$1
-	echo "Using passed directory ${OUTDIR} for output"
+mkdir -p "${OUTDIR}" || { echo "Failed to create directory ${OUTDIR}"; exit 1; }
+
+cd "${OUTDIR}"
+if [ ! -d "${OUTDIR}/linux" ]; then
+    echo "Cloning Linux kernel source..."
+    git clone "${KERNEL_REPO}" --depth 1 --branch "${KERNEL_VERSION}" linux
 fi
 
-mkdir -p ${OUTDIR}
+cd linux
+echo "Building Linux kernel..."
+make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} defconfig
+make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} -j$(nproc)
 
-cd "$OUTDIR"
-if [ ! -d "${OUTDIR}/linux-stable" ]; then
-    #Clone only if the repository does not exist.
-	echo "CLONING GIT LINUX STABLE VERSION ${KERNEL_VERSION} IN ${OUTDIR}"
-	git clone ${KERNEL_REPO} --depth 1 --single-branch --branch ${KERNEL_VERSION}
-fi
-if [ ! -e ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ]; then
-    cd linux-stable
-    echo "Checking out version ${KERNEL_VERSION}"
-    git checkout ${KERNEL_VERSION}
-
-    # TODO: Add your kernel build steps here
-fi
-
-echo "Adding the Image in outdir"
+echo "Kernel build complete. Copying Image to ${OUTDIR}"
+cp -v arch/${ARCH}/boot/Image "${OUTDIR}/"
 
 echo "Creating the staging directory for the root filesystem"
-cd "$OUTDIR"
-if [ -d "${OUTDIR}/rootfs" ]
-then
-	echo "Deleting rootfs directory at ${OUTDIR}/rootfs and starting over"
-    sudo rm  -rf ${OUTDIR}/rootfs
+if [ -d "${OUTDIR}/rootfs" ]; then
+    sudo rm -rf "${OUTDIR}/rootfs"
 fi
+mkdir -p "${OUTDIR}/rootfs"
 
-# TODO: Create necessary base directories
-
-cd "$OUTDIR"
-if [ ! -d "${OUTDIR}/busybox" ]
-then
-git clone git://busybox.net/busybox.git
+# Build busybox
+cd "${OUTDIR}"
+if [ ! -d busybox ]; then
+    git clone git://busybox.net/busybox.git
     cd busybox
     git checkout ${BUSYBOX_VERSION}
-    # TODO:  Configure busybox
 else
     cd busybox
 fi
 
-# TODO: Make and install busybox
+echo "Creating init script..."
+cat <<'EOF' >"${OUTDIR}/rootfs/init"
+#!/bin/sh
+# Simple init script
+mount -t proc none /proc
+mount -t sysfs none /sys
+# Run the shell if no arguments
+exec /bin/sh
+EOF
+chmod +x "${OUTDIR}/rootfs/init"
 
-echo "Library dependencies"
-${CROSS_COMPILE}readelf -a bin/busybox | grep "program interpreter"
-${CROSS_COMPILE}readelf -a bin/busybox | grep "Shared library"
+echo "Configuring and building BusyBox..."
+make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} defconfig
+make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} install CONFIG_PREFIX="${OUTDIR}/rootfs"
 
-# TODO: Add library dependencies to rootfs
+echo "Cross-compiling writer application..."
+${CROSS_COMPILE}gcc -o writer "${FINDER_APP_DIR}/writer.c"
+if [ ! -f writer ]; then
+    echo "Compilation of writer application failed."
+    exit 1
+fi
 
-# TODO: Make device nodes
+# Create necessary directories including home
+echo "Setting up root filesystem directories..."
+cd "${OUTDIR}/rootfs"
+mkdir -pv {bin,sbin,etc,proc,sys,usr/{bin,sbin},lib,home}
 
-# TODO: Clean and build the writer utility
+# Now that home exists, copy the finder scripts and executables
+echo "Adding finder application and scripts..."
 
-# TODO: Copy the finder related scripts and executables to the /home directory
-# on the target rootfs
+if [ -d "home" ]; then
+    cp -v "${FINDER_APP_DIR}"/{finder.sh,finder-test.sh,conf/username.txt,conf/assignment.txt,autorun-qemu.sh} home/
+    # Correct the path within finder-test.sh
+    sed -i 's|../conf/assignment.txt|conf/assignment.txt|' home/finder-test.sh
+else
+    echo "Error: home directory not found in the root filesystem."
+fi
 
-# TODO: Chown the root directory
+# Create initramfs
+echo "Creating initramfs..."
+cd "${OUTDIR}/rootfs"
+find . | cpio -H newc -o | gzip > "${OUTDIR}/initramfs.cpio.gz"
 
-# TODO: Create initramfs.cpio.gz
+echo "Build and root filesystem setup complete."
