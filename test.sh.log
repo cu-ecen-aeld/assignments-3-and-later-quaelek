@@ -1,0 +1,269 @@
+Running test with user quaelek
+-- Generating ;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/../student-test/assignment1/Test_validate_username_Runner.c from test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c;../student-test/assignment1/Test_validate_username.c
+-- Building executable including ;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/../student-test/assignment1/Test_validate_username_Runner.c test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c;../student-test/assignment1/Test_validate_username.c and ../examples/autotest-validate/autotest-validate.c
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/quaelek/Desktop/git1/build
+[  8%] Building C object assignment-autotest/Unity/src/CMakeFiles/unity.dir/unity.c.o
+[ 16%] Linking C static library libunity.a
+[ 16%] Built target unity
+[ 25%] Generating ../../assignment-autotest/test/assignment1/Test_hello_Runner.c, ../../assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c, ../../student-test/assignment1/Test_validate_username_Runner.c, ../../assignment-autotest/test/unity_runner.c
+Test files for auto dependency generation test/assignment1/Test_hello.c test/assignment1/Test_assignment_validate.c ../student-test/assignment1/Test_validate_username.c
+Autogenerating runner for test/assignment1/Test_hello.c
+Autogenerating runner for test/assignment1/Test_assignment_validate.c
+Autogenerating runner for ../student-test/assignment1/Test_validate_username.c
+Autogenerating test/unity_runner.c
+Scanning dependencies of target assignment-autotest
+[ 33%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello.c.o
+[ 41%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate.c.o
+[ 50%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/student-test/assignment1/Test_validate_username.c.o
+[ 58%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello_Runner.c.o
+[ 66%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate_Runner.c.o
+[ 75%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/student-test/assignment1/Test_validate_username_Runner.c.o
+[ 83%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/examples/autotest-validate/autotest-validate.c.o
+[ 91%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/unity_runner.c.o
+[100%] Linking C executable assignment-autotest
+[100%] Built target assignment-autotest
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello.c:6:test_hello:INFO: Hello!  Your unity setup is working!
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello.c:4:test_hello:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate.c:9:test_assignment_validate:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Read quaelek from conf/username.txt
+/home/quaelek/Desktop/git1/assignment-autotest/../student-test/assignment1/Test_validate_username.c:15:test_validate_my_username:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Executing assignment test script
+~/Desktop/git1/assignment-autotest/test/assignment1 ~/Desktop/git1
+~/Desktop/git1/finder-app ~/Desktop/git1/assignment-autotest/test/assignment1 ~/Desktop/git1
+Error: Two arguments are required. Usage ./writer.sh <full_path_to_file> <text_string>
+Error: Two arguments are required. Usage ./writer.sh <full_path_to_file> <text_string>
+Using default value AELD_IS_FUN for string to write
+Using default value 10 for number of files to write
+Writing 10 files containing string AELD_IS_FUN to /tmp/aeld-data
+Succesfully wrote to the file: /tmp/aeld-data/quaelek1.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek2.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek3.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek4.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek5.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek6.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek7.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek8.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek9.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek10.txt
+failed: expected  The number of files are 10 and the number of matching lines are 10 in The number of files are 10 and the number of matching lines is 10 but instead found
+[0;31mValidation Error:finder-test.sh execution for default directory failed with return code 1[0m
+Writing 10 files containing string AELD_IS_FUN to /tmp/aeld-data/V4Qh0T9irmul65cYLF3R0ZXqXsfZS0wr
+Succesfully wrote to the file: /tmp/aeld-data/V4Qh0T9irmul65cYLF3R0ZXqXsfZS0wr/quaelek1.txt
+Succesfully wrote to the file: /tmp/aeld-data/V4Qh0T9irmul65cYLF3R0ZXqXsfZS0wr/quaelek2.txt
+Succesfully wrote to the file: /tmp/aeld-data/V4Qh0T9irmul65cYLF3R0ZXqXsfZS0wr/quaelek3.txt
+Succesfully wrote to the file: /tmp/aeld-data/V4Qh0T9irmul65cYLF3R0ZXqXsfZS0wr/quaelek4.txt
+Succesfully wrote to the file: /tmp/aeld-data/V4Qh0T9irmul65cYLF3R0ZXqXsfZS0wr/quaelek5.txt
+Succesfully wrote to the file: /tmp/aeld-data/V4Qh0T9irmul65cYLF3R0ZXqXsfZS0wr/quaelek6.txt
+Succesfully wrote to the file: /tmp/aeld-data/V4Qh0T9irmul65cYLF3R0ZXqXsfZS0wr/quaelek7.txt
+Succesfully wrote to the file: /tmp/aeld-data/V4Qh0T9irmul65cYLF3R0ZXqXsfZS0wr/quaelek8.txt
+Succesfully wrote to the file: /tmp/aeld-data/V4Qh0T9irmul65cYLF3R0ZXqXsfZS0wr/quaelek9.txt
+Succesfully wrote to the file: /tmp/aeld-data/V4Qh0T9irmul65cYLF3R0ZXqXsfZS0wr/quaelek10.txt
+failed: expected  The number of files are 10 and the number of matching lines are 10 in The number of files are 10 and the number of matching lines is 10 but instead found
+[0;31mValidation Error:finder-test.sh execution for random directory failed with return code 1[0m
+Validation failed with error list :finder-test.sh execution for default directory failed with return code 1:finder-test.sh execution for random directory failed with return code 1
+Test of assignment assignment1 failed with rc=1
+Running test with user quaelek
+-- Generating ;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/../student-test/assignment1/Test_validate_username_Runner.c from test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c;../student-test/assignment1/Test_validate_username.c
+-- Building executable including ;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/../student-test/assignment1/Test_validate_username_Runner.c test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c;../student-test/assignment1/Test_validate_username.c and ../examples/autotest-validate/autotest-validate.c
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/quaelek/Desktop/git1/build
+[  8%] Building C object assignment-autotest/Unity/src/CMakeFiles/unity.dir/unity.c.o
+[ 16%] Linking C static library libunity.a
+[ 16%] Built target unity
+[ 25%] Generating ../../assignment-autotest/test/assignment1/Test_hello_Runner.c, ../../assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c, ../../student-test/assignment1/Test_validate_username_Runner.c, ../../assignment-autotest/test/unity_runner.c
+Test files for auto dependency generation test/assignment1/Test_hello.c test/assignment1/Test_assignment_validate.c ../student-test/assignment1/Test_validate_username.c
+Autogenerating runner for test/assignment1/Test_hello.c
+Autogenerating runner for test/assignment1/Test_assignment_validate.c
+Autogenerating runner for ../student-test/assignment1/Test_validate_username.c
+Autogenerating test/unity_runner.c
+Scanning dependencies of target assignment-autotest
+[ 33%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello.c.o
+[ 41%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate.c.o
+[ 50%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/student-test/assignment1/Test_validate_username.c.o
+[ 58%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello_Runner.c.o
+[ 66%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate_Runner.c.o
+[ 75%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/student-test/assignment1/Test_validate_username_Runner.c.o
+[ 83%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/examples/autotest-validate/autotest-validate.c.o
+[ 91%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/unity_runner.c.o
+[100%] Linking C executable assignment-autotest
+[100%] Built target assignment-autotest
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello.c:6:test_hello:INFO: Hello!  Your unity setup is working!
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello.c:4:test_hello:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate.c:9:test_assignment_validate:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Read quaelek from conf/username.txt
+/home/quaelek/Desktop/git1/assignment-autotest/../student-test/assignment1/Test_validate_username.c:15:test_validate_my_username:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Executing assignment test script
+~/Desktop/git1/assignment-autotest/test/assignment1 ~/Desktop/git1
+~/Desktop/git1/finder-app ~/Desktop/git1/assignment-autotest/test/assignment1 ~/Desktop/git1
+Error: Two arguments are required. Usage ./writer.sh <full_path_to_file> <text_string>
+Error: Two arguments are required. Usage ./writer.sh <full_path_to_file> <text_string>
+Using default value AELD_IS_FUN for string to write
+Using default value 10 for number of files to write
+Writing 10 files containing string AELD_IS_FUN to /tmp/aeld-data
+Succesfully wrote to the file: /tmp/aeld-data/quaelek1.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek2.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek3.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek4.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek5.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek6.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek7.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek8.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek9.txt
+Succesfully wrote to the file: /tmp/aeld-data/quaelek10.txt
+failed: expected  The number of files are 10 and the number of matching lines are 10 in The number of files are 10 and the number of matching lines is 10 but instead found
+[0;31mValidation Error:finder-test.sh execution for default directory failed with return code 1[0m
+Writing 10 files containing string AELD_IS_FUN to /tmp/aeld-data/wwK37vSl5P5n0n2ONSSDRilncxBxr8ge
+Succesfully wrote to the file: /tmp/aeld-data/wwK37vSl5P5n0n2ONSSDRilncxBxr8ge/quaelek1.txt
+Succesfully wrote to the file: /tmp/aeld-data/wwK37vSl5P5n0n2ONSSDRilncxBxr8ge/quaelek2.txt
+Succesfully wrote to the file: /tmp/aeld-data/wwK37vSl5P5n0n2ONSSDRilncxBxr8ge/quaelek3.txt
+Succesfully wrote to the file: /tmp/aeld-data/wwK37vSl5P5n0n2ONSSDRilncxBxr8ge/quaelek4.txt
+Succesfully wrote to the file: /tmp/aeld-data/wwK37vSl5P5n0n2ONSSDRilncxBxr8ge/quaelek5.txt
+Succesfully wrote to the file: /tmp/aeld-data/wwK37vSl5P5n0n2ONSSDRilncxBxr8ge/quaelek6.txt
+Succesfully wrote to the file: /tmp/aeld-data/wwK37vSl5P5n0n2ONSSDRilncxBxr8ge/quaelek7.txt
+Succesfully wrote to the file: /tmp/aeld-data/wwK37vSl5P5n0n2ONSSDRilncxBxr8ge/quaelek8.txt
+Succesfully wrote to the file: /tmp/aeld-data/wwK37vSl5P5n0n2ONSSDRilncxBxr8ge/quaelek9.txt
+Succesfully wrote to the file: /tmp/aeld-data/wwK37vSl5P5n0n2ONSSDRilncxBxr8ge/quaelek10.txt
+failed: expected  The number of files are 10 and the number of matching lines are 10 in The number of files are 10 and the number of matching lines is 10 but instead found
+[0;31mValidation Error:finder-test.sh execution for random directory failed with return code 1[0m
+Validation failed with error list :finder-test.sh execution for default directory failed with return code 1:finder-test.sh execution for random directory failed with return code 1
+Test of assignment assignment1 failed with rc=1
+Running test with user quaelek
+-- Generating ;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c from test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c
+-- Building executable including ;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c and ../examples/autotest-validate/autotest-validate.c
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/quaelek/Desktop/git1/build
+[ 10%] Building C object assignment-autotest/Unity/src/CMakeFiles/unity.dir/unity.c.o
+[ 20%] Linking C static library libunity.a
+[ 20%] Built target unity
+[ 30%] Generating ../../assignment-autotest/test/assignment1/Test_hello_Runner.c, ../../assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c, ../../assignment-autotest/test/unity_runner.c
+Test files for auto dependency generation test/assignment1/Test_hello.c test/assignment1/Test_assignment_validate.c
+Autogenerating runner for test/assignment1/Test_hello.c
+Autogenerating runner for test/assignment1/Test_assignment_validate.c
+Autogenerating test/unity_runner.c
+Scanning dependencies of target assignment-autotest
+[ 40%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello.c.o
+[ 50%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate.c.o
+[ 60%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello_Runner.c.o
+[ 70%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate_Runner.c.o
+[ 80%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/examples/autotest-validate/autotest-validate.c.o
+[ 90%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/unity_runner.c.o
+[100%] Linking C executable assignment-autotest
+[100%] Built target assignment-autotest
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello.c:6:test_hello:INFO: Hello!  Your unity setup is working!
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello.c:4:test_hello:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate.c:9:test_assignment_validate:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Executing assignment test script
+~/Desktop/git1/assignment-autotest/test/assignment2 ~/Desktop/git1
+~/Desktop/git1/finder-app ~/Desktop/git1/assignment-autotest/test/assignment2 ~/Desktop/git1
+rm -f writer *.o
+gcc -Wall -c writer.c
+gcc -Wall writer.o -o writer
+Usage: ./writer <full_path_to_file> <text_string>
+Usage: ./writer <full_path_to_file> <text_string>
+Using default value AELD_IS_FUN for string to write
+Using default value 10 for number of files to write
+Writing 10 files containing string AELD_IS_FUN to /tmp/aeld-data
+/tmp/aeld-data created
+./finder-test.sh: 57: ./writer.c: Permission denied
+[0;31mValidation Error:finder-test.sh execution failed with return code 126[0m
+Validation failed with error list :finder-test.sh execution failed with return code 126
+Test of assignment assignment2 failed with rc=1
+Running test with user quaelek
+-- Generating ;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c from test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c
+-- Building executable including ;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c and ../examples/autotest-validate/autotest-validate.c
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/quaelek/Desktop/git1/build
+[ 10%] Building C object assignment-autotest/Unity/src/CMakeFiles/unity.dir/unity.c.o
+[ 20%] Linking C static library libunity.a
+[ 20%] Built target unity
+[ 30%] Generating ../../assignment-autotest/test/assignment1/Test_hello_Runner.c, ../../assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c, ../../assignment-autotest/test/unity_runner.c
+Test files for auto dependency generation test/assignment1/Test_hello.c test/assignment1/Test_assignment_validate.c
+Autogenerating runner for test/assignment1/Test_hello.c
+Autogenerating runner for test/assignment1/Test_assignment_validate.c
+Autogenerating test/unity_runner.c
+Scanning dependencies of target assignment-autotest
+[ 40%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello.c.o
+[ 50%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate.c.o
+[ 60%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello_Runner.c.o
+[ 70%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate_Runner.c.o
+[ 80%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/examples/autotest-validate/autotest-validate.c.o
+[ 90%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/unity_runner.c.o
+[100%] Linking C executable assignment-autotest
+[100%] Built target assignment-autotest
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello.c:6:test_hello:INFO: Hello!  Your unity setup is working!
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello.c:4:test_hello:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate.c:9:test_assignment_validate:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Executing assignment test script
+~/Desktop/git1/assignment-autotest/test/assignment2 ~/Desktop/git1
+~/Desktop/git1/finder-app ~/Desktop/git1/assignment-autotest/test/assignment2 ~/Desktop/git1
+rm -f writer *.o
+gcc -Wall -c writer.c
+gcc -Wall writer.o -o writer
+Usage: ./writer <full_path_to_file> <text_string>
+Usage: ./writer <full_path_to_file> <text_string>
+Using default value AELD_IS_FUN for string to write
+Using default value 10 for number of files to write
+Writing 10 files containing string AELD_IS_FUN to /tmp/aeld-data
+/tmp/aeld-data created
+Removing the old writer utility and compiling as a native application
+rm -f writer *.o
+gcc -Wall -c writer.c
+gcc -Wall writer.o -o writer
+Successfully wrote to the file: /tmp/aeld-data/quaelek1.txt
+Successfully wrote to the file: /tmp/aeld-data/quaelek2.txt
+Successfully wrote to the file: /tmp/aeld-data/quaelek3.txt
+Successfully wrote to the file: /tmp/aeld-data/quaelek4.txt
+Successfully wrote to the file: /tmp/aeld-data/quaelek5.txt
+Successfully wrote to the file: /tmp/aeld-data/quaelek6.txt
+Successfully wrote to the file: /tmp/aeld-data/quaelek7.txt
+Successfully wrote to the file: /tmp/aeld-data/quaelek8.txt
+Successfully wrote to the file: /tmp/aeld-data/quaelek9.txt
+Successfully wrote to the file: /tmp/aeld-data/quaelek10.txt
+The number of files are 10 and the number of matching lines are 10
+success
+Test of assignment assignment2 complete with success
