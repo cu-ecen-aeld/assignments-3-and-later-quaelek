@@ -1,9 +1,0 @@
-﻿{
-  "agentId": 21,
-  "agentName": "Ubuntu",
-  "poolId": 1,
-  "poolName": "Default",
-  "serverUrl": "https://pipelinesghubeus25.actions.githubusercontent.com/Gt1hxExpuyvW4UJwIMhftAvQkluusfVSSykS8qXb8a6lONGbhF/",
-  "gitHubUrl": "https://github.com/cu-ecen-aeld/assignment-1-quaelek",
-  "workFolder": "_work"
-}
