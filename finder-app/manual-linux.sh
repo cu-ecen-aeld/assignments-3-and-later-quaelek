@@ -1,19 +1,23 @@
 #!/bin/bash
 # Script outline to install and build kernel.
 # Author: Siddhant Jajoo... NOT!
+# Additional contributions by Abdul Sabbagh for device tree binaries and library setup.
 
 set -euo pipefail
 
+# a. Handle outdir argument
 OUTDIR=${1:-/tmp/aeld}
 KERNEL_REPO=https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 KERNEL_VERSION=v5.1.10
 BUSYBOX_VERSION=1_33_1
 FINDER_APP_DIR=$(realpath $(dirname "$0"))
 ARCH=arm64
-CROSS_COMPILE=aarch64-linux-gnu-
+CROSS_COMPILE=aarch64-none-linux-gnu-
 
+# b. Create outdir if it doesn't exist
 mkdir -p "${OUTDIR}" || { echo "Failed to create directory ${OUTDIR}"; exit 1; }
 
+# c. Build kernel image
 cd "${OUTDIR}"
 if [ ! -d "${OUTDIR}/linux" ]; then
     echo "Cloning Linux kernel source..."
@@ -23,16 +27,32 @@ fi
 cd linux
 echo "Building Linux kernel..."
 make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} defconfig
-make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} -j$(nproc)
+make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} -j"$(nproc)"
 
+# Additional step by Abdul Sabbagh: build device tree binaries
+make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} dtbs # Build device tree binaries
+
+# d. Copy kernel image to outdir
 echo "Kernel build complete. Copying Image to ${OUTDIR}"
 cp -v arch/${ARCH}/boot/Image "${OUTDIR}/"
 
+# e. Build root filesystem
 echo "Creating the staging directory for the root filesystem"
 if [ -d "${OUTDIR}/rootfs" ]; then
     sudo rm -rf "${OUTDIR}/rootfs"
 fi
 mkdir -p "${OUTDIR}/rootfs"
+
+mkdir -p "${OUTDIR}/rootfs/lib"
+mkdir -p "${OUTDIR}/rootfs/lib64"
+
+# Additional steps by Abdul Sabbagh: Setup essential libraries for the root filesystem
+cd "${OUTDIR}/rootfs"
+PATH_LIBRARY=$(aarch64-none-linux-gnu-gcc -print-sysroot)
+cp "${PATH_LIBRARY}/lib/ld-linux-aarch64.so.1" "${OUTDIR}/rootfs/lib"
+cp "${PATH_LIBRARY}/lib64/libm.so.6" "${OUTDIR}/rootfs/lib64"
+cp "${PATH_LIBRARY}/lib64/libresolv.so.2" "${OUTDIR}/rootfs/lib64"
+cp "${PATH_LIBRARY}/lib64/libc.so.6" "${OUTDIR}/rootfs/lib64"
 
 # Build busybox
 cd "${OUTDIR}"
@@ -44,7 +64,39 @@ else
     cd busybox
 fi
 
-echo "Creating init script..."
+echo "Configuring and building BusyBox..."
+make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} defconfig
+make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} install CONFIG_PREFIX="${OUTDIR}/rootfs"
+
+# Ensure /home and /home/conf directories exist in rootfs before copying files
+echo "Ensuring /home and /home/conf directories exist in rootfs..."
+mkdir -p "${OUTDIR}/rootfs/home/conf"
+
+# Cross-compiling writer application
+echo "Cross-compiling writer application..."
+${CROSS_COMPILE}gcc -o "${OUTDIR}/rootfs/home/writer" "${FINDER_APP_DIR}/writer.c"
+if [ ! -f "${OUTDIR}/rootfs/home/writer" ]; then
+    echo "Compilation of writer application failed."
+    exit 1
+fi
+
+# Setting up remaining root filesystem directories
+echo "Setting up root filesystem directories..."
+cd "${OUTDIR}/rootfs"
+mkdir -pv {bin,sbin,etc,proc,sys,usr/{bin,sbin},lib}
+
+# Adding finder application and scripts
+echo "Adding finder application, scripts, and configuration files..."
+cp -v "${FINDER_APP_DIR}"/finder.sh "${OUTDIR}/rootfs/home/"
+cp -v "${FINDER_APP_DIR}"/finder-test.sh "${OUTDIR}/rootfs/home/"
+cp -v "${FINDER_APP_DIR}"/autorun-qemu.sh "${OUTDIR}/rootfs/home/"
+cp -v "${FINDER_APP_DIR}"/conf/username.txt "${OUTDIR}/rootfs/home/conf/"
+cp -v "${FINDER_APP_DIR}"/conf/assignment.txt "${OUTDIR}/rootfs/home/conf/"
+# Correct the path within finder-test.sh to reflect new location of configuration files
+sed -i 's|../conf/assignment.txt|conf/assignment.txt|' "${OUTDIR}/rootfs/home/finder-test.sh"
+
+
+# Create an init script in the rootfs directory
 cat <<'EOF' >"${OUTDIR}/rootfs/init"
 #!/bin/sh
 # Simple init script
@@ -53,36 +105,11 @@ mount -t sysfs none /sys
 # Run the shell if no arguments
 exec /bin/sh
 EOF
+
+# Make the init script executable
 chmod +x "${OUTDIR}/rootfs/init"
 
-echo "Configuring and building BusyBox..."
-make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} defconfig
-make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} install CONFIG_PREFIX="${OUTDIR}/rootfs"
-
-echo "Cross-compiling writer application..."
-${CROSS_COMPILE}gcc -o writer "${FINDER_APP_DIR}/writer.c"
-if [ ! -f writer ]; then
-    echo "Compilation of writer application failed."
-    exit 1
-fi
-
-# Create necessary directories including home
-echo "Setting up root filesystem directories..."
-cd "${OUTDIR}/rootfs"
-mkdir -pv {bin,sbin,etc,proc,sys,usr/{bin,sbin},lib,home}
-
-# Now that home exists, copy the finder scripts and executables
-echo "Adding finder application and scripts..."
-
-if [ -d "home" ]; then
-    cp -v "${FINDER_APP_DIR}"/{finder.sh,finder-test.sh,conf/username.txt,conf/assignment.txt,autorun-qemu.sh} home/
-    # Correct the path within finder-test.sh
-    sed -i 's|../conf/assignment.txt|conf/assignment.txt|' home/finder-test.sh
-else
-    echo "Error: home directory not found in the root filesystem."
-fi
-
-# Create initramfs
+# h. Create initramfs
 echo "Creating initramfs..."
 cd "${OUTDIR}/rootfs"
 find . | cpio -H newc -o | gzip > "${OUTDIR}/initramfs.cpio.gz"
