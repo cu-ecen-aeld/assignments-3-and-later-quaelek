@@ -18,3 +18,4 @@ set(TESTED_SOURCE
     ../examples/threading/threading.c
 )
 add_subdirectory(assignment-autotest)
+

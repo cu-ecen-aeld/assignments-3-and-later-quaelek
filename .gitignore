@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Node binaries
 actions-runner/externals/node*/bin/node
 
@@ -36,9 +35,13 @@ build/
 .env
 .env.local
 
-=======
+# Compiled object files, build artifacts, and logs
 *.o
-build/
-.vscode/
-*.log
->>>>>>> buildroot-assignments-base/master
+
+# Specific ignore patterns from branches
+writer
+Test_*_Runner.c
+crosstool-ng
+aesd-build
+test.sh.log
+
