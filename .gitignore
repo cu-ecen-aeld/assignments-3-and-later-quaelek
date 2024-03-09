@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Node binaries
 actions-runner/externals/node*/bin/node
 
@@ -35,3 +36,9 @@ build/
 .env
 .env.local
 
+=======
+*.o
+build/
+.vscode/
+*.log
+>>>>>>> buildroot-assignments-base/master
