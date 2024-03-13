@@ -267,3 +267,79 @@ Successfully wrote to the file: /tmp/aeld-data/quaelek10.txt
 The number of files are 10 and the number of matching lines are 10
 success
 Test of assignment assignment2 complete with success
+Running test with user quaelek
+Executing assignment test script
+CMake Error: The current CMakeCache.txt directory /home/quaelek/Desktop/yocto/assignment3/assignments-3-and-later-quaelek/build/CMakeCache.txt is different than the directory /home/quaelek/Desktop/git1/build where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+CMake Error: The source "/home/quaelek/Desktop/yocto/assignment3/assignments-3-and-later-quaelek/CMakeLists.txt" does not match the source "/home/quaelek/Desktop/git1/CMakeLists.txt" used to generate cache.  Re-run cmake with a different source directory.
+-- Generating ;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment4/Test_threading_Runner.c from test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c;test/assignment4/Test_threading.c
+-- Building executable including ;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c;/home/quaelek/Desktop/git1/assignment-autotest/test/assignment4/Test_threading_Runner.c test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c;test/assignment4/Test_threading.c and ../examples/autotest-validate/autotest-validate.c;../examples/threading/threading.c
+-- Configuring done
+CMake Error at assignment-autotest/CMakeLists.txt:24 (add_executable):
+  Cannot find source file:
+
+    ../examples/threading/threading.c
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+  .hpp .hxx .in .txx
+
+
+CMake Error at assignment-autotest/CMakeLists.txt:24 (add_executable):
+  No SOURCES given to target: assignment-autotest
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
+make: *** [Makefile:210: cmake_check_build_system] Error 1
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello.c:6:test_hello:INFO: Hello!  Your unity setup is working!
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello.c:4:test_hello:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate.c:9:test_assignment_validate:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Running tests at /home/quaelek/Desktop/git1/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_systemcalls
+Remove trailing newline
+Read this is a test from testfile.txt
+system() echo this is a test returned this is a test
+Remove trailing newline
+Read home is /home/quaelek from testfile.txt
+system() echo home is $HOME returned: home is /home/quaelek
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment3/Test_systemcalls.c:28:test_systemcalls:PASS
+Running tests at /home/quaelek/Desktop/git1/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_exec_calls
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello.c:6:test_hello:INFO: Hello!  Your unity setup is working!
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_hello.c:4:test_hello:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment1/Test_assignment_validate.c:9:test_assignment_validate:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Running tests at /home/quaelek/Desktop/git1/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_systemcalls
+Remove trailing newline
+Read this is a test from testfile.txt
+system() echo this is a test returned this is a test
+Remove trailing newline
+Read home is /home/quaelek from testfile.txt
+system() echo home is $HOME returned: home is /home/quaelek
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment3/Test_systemcalls.c:28:test_systemcalls:PASS
+Running tests at /home/quaelek/Desktop/git1/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_exec_calls
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment3/Test_systemcalls.c:58:test_exec_calls:PASS
+Running tests at /home/quaelek/Desktop/git1/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_exec_redirect_calls
+Remove trailing newline
+Read home is /home/quaelek from testfile.txt
+execv /bin/sh -c echo home is $HOME returned home is /home/quaelek
+Remove trailing newline
+Read home is $HOME from testfile.txt
+execv /bin/echo home is $HOME returned home is $HOME
+/home/quaelek/Desktop/git1/assignment-autotest/test/assignment3/Test_systemcalls.c:72:test_exec_redirect_calls:PASS
+
+-----------------------
+3 Tests 0 Failures 0 Ignored 
+OK
+Test of assignment assignment7 complete with success
